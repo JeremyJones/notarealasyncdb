@@ -12,31 +12,37 @@ export class Collection<T extends Entity> {
     this.load();
   }
 
-  create(obj: object): string {
+  create(obj: object, callback: CallableFunction = null): string {
     const entity = {id: generateId(), ...obj} as T;
     this.entities.push(entity);
     this.save();
-    return entity.id;
+    if (callback) return callback(entity)
+    else return entity.id;
   }
 
-  delete(id): void {
+  delete(id, callback: CallableFunction = null): void {
     const index = this.findIndex(id);
     this.entities.splice(index, 1);
     this.save();
+    if (callback) callback(id)
   }
 
-  get(id: string): T {
-    return this.entities.find((item) => item.id === id);
+  get(id: string, callback: CallableFunction = null): T {
+    const rec = this.entities.find((item) => item.id === id);
+    if (callback) return callback(rec)
+    else return rec
   }
 
-  list(): T[] {
-    return this.entities;
+  list(callback: CallableFunction = null): T[] {
+    if (callback) return callback(this.entities)
+    else return this.entities;
   }
 
-  update(entity: T): void {
+  update(entity: T, callback: CallableFunction = null): void {
     const index = this.findIndex(entity.id);
     this.entities[index] = entity;
     this.save();
+    if (callback) callback(this.entities[index])
   }
 
   private findIndex(id) {
