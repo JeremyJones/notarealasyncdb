@@ -7,7 +7,7 @@ This fork adds optional callbacks to most of the retrieval operations, so that c
 
 The database engine I'm targeting is MySQL but it should be near-compatible with other SQL-engines e.g. Postgres, SQLite.
 
-For more information see the usage of notarealdb. This is intended as a drop-in replacement for notarealdb, which allows its callers to pass in write code in an asynchronous-oriented style rather than 
+For more information see the usage of notarealdb. This is intended as a drop-in replacement for notarealdb, which allows its callers to pass in code in an asynchronous-oriented style rather than relying on synchronous results & changes.
 
 _Note on generated IDs:_ Because notarealdb generates alphanumeric IDs, those have been left in place, meaning that a future database would need to use those alphanumeric IDs, not their own auto-generated e.g. integers.
 
