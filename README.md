@@ -1,4 +1,5 @@
-# Not a Real Async DB
+Not a Real Async DB
+====================
 
 This is a fork of notarealdb -- which stores data in local JSON files, for testing and sample applications.
 
